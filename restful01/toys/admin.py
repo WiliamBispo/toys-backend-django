@@ -1,3 +1,17 @@
 from django.contrib import admin
+from toys.models import Toy
+
+
+class ToyAdmin(admin.ModelAdmin):
+    list_display = [
+        "name",
+        "toy_category",
+        "release_date",
+    ]
+
+    search_fields = ["name", "toy_category"]
+    list_filter = ["toy_category", "release_date", "was_included_in_home"]
+
 
 # Register your models here.
+admin.site.register(Toy, ToyAdmin)
