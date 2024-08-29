@@ -37,8 +37,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    # Habilita o Django REST framework
     'rest_framework',
+    # habilita o Toys application
     'toys.apps.ToysConfig',
+    # habilita o Drones application
+    'drones.apps.DronesConfig',
 ]
 
 MIDDLEWARE = [
