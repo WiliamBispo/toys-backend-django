@@ -49,6 +49,8 @@ INSTALLED_APPS = [
     "rest_framework.authtoken",
     # OpenAPI
     "drf_spectacular",
+    # Habilita a aplicação homepage
+    "homepage",
 ]
 
 MIDDLEWARE = [
@@ -157,11 +159,23 @@ REST_FRAMEWORK = {
         "pilots": "150/hour",
     },
     "DEFAULT_SCHEMA_CLASS": "drf_spectacular.openapi.AutoSchema",
-    "SPECTACULAR_SETTINGS": {
-        "TITLE": "RESTIC Back-end API",
-        "DESCRIPTION": "Your project description",
-        "VERSION": "1.0.0",
-        "SERVE_INCLUDE_SCHEMA": False,
-        # OTHER SETTINGS
+}
+
+SPECTACULAR_SETTINGS = {
+    "TITLE": "RESTIC Back-end API",
+    "DESCRIPTION": "Your project description",
+    "VERSION": "1.0.0",
+    "SERVE INCLUDE SCHEMA": False,
+    # OTHER SETTINGS
+    "AUTHENTICATION_WHITELIST": [
+        # Lista de autenticações suportadas na documentação
+        "rest_framework.authentication.TokenAuthentication",
+    ],
+    "SWAGGER_UI_SETTINGS": {
+        # Mantém a autorização no Swagger UI durante as requisições
+        "persistAuthorization": True,
     },
 }
+
+MEDIA_URL = "/media/"
+MEDIA_ROOT = BASE_DIR / "media"

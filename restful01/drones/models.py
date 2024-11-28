@@ -20,6 +20,9 @@ class Drone(models.Model):
     inserted_timestamp = models.DateTimeField(auto_now_add=True)
     owner = models.ForeignKey(
         "auth.User", related_name="drones", on_delete=models.CASCADE)
+    picture = models.ImageField(
+        upload_to="drone_images/", blank=True, null=True)
+    is_published = models.BooleanField(default=False)
 
     class Meta:
         ordering = ('name',)
